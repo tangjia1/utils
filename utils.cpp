@@ -39,7 +39,7 @@ int gbk2utf8(const string&src, string& dst)
     
 }
 
-int CGbknUtf8::utf8togbk(const string& src, string& dst)
+int utf8togbk(const string& src, string& dst)
 {
     size_t out_len = src.size() * 3;
     char *out_buf = new char[out_len];
@@ -133,7 +133,7 @@ int gzdecompress(Bytef *zdata, uLong nzdata,
     return -3;
 }
 
-string encode(const unsigned char* data,int data_len)
+string base64_encode(const unsigned char* data,int data_len)
 {
     
     const char EncodeTable[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -182,7 +182,7 @@ string encode(const unsigned char* data,int data_len)
 //完整的base64定义可见RFC 1421和RFC 2045。编码后的数据比原始数据略长，
 //根据RFC 822规定，每76个字符，还需要加上一个回车换行。
 //可以估算编码后数据长度大约为原长的135.1%。
-string CBase64::decode(const char* data,int data_len)
+string base64_decode(const char* data,int data_len)
 {
     
     const char DecodeTable[] =
